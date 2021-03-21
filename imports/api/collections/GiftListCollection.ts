@@ -1,6 +1,9 @@
 import {Mongo} from 'meteor/mongo';
 import {GiftList} from "../../objects/giftlist/GiftList";
 
+/**
+ * todo remove update gift list and allow adding/removing single gifts by id
+ */
 export class GiftListCollectionManager {
 
     GiftListCollection: Mongo.Collection<GiftList> = new Mongo.Collection<GiftList>('giftlist');
