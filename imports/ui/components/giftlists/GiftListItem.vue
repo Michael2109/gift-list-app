@@ -21,11 +21,12 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
 
 import DeleteGiftListModal from "./DeleteGiftListModal";
-export default {
-  name: "GiftListItem",
+import Vue from "vue";
+
+export default Vue.extend( {
   components: {DeleteGiftListModal},
   props: {
     giftList: {
@@ -44,7 +45,7 @@ export default {
       });
     }
   }
-}
+});
 </script>
 
 <style scoped>

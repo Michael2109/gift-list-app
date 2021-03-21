@@ -30,10 +30,11 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import CreateGiftModal from "./CreateGiftModal";
-export default {
-  name: "GiftListPageHeader",
+import Vue from "vue";
+
+export default Vue.extend( {
   components: {CreateGiftModal},
   props: ['giftList'],
   methods: {
@@ -41,7 +42,7 @@ export default {
       this.$router.push({name: "GiftLists"});
     }
   }
-}
+});
 </script>
 
 <style scoped>

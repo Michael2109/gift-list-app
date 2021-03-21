@@ -9,13 +9,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import GiftListsPageHeader from "../components/giftlists/GiftListsPageHeader";
 import GiftListItem from "../components/giftlists/GiftListItem";
 import {GiftListManager} from "../managers/GiftListManager";
+import Vue from "vue";
 
-export default {
-  name: 'GiftList',
+export default Vue.extend({
   components: {GiftListsPageHeader, GiftListItem},
   mounted() {
     this.updateGiftLists();
@@ -45,5 +45,5 @@ export default {
       GiftListManager.getInstance().getGiftLists((giftLists => this.giftLists = giftLists));
     }
   }
-}
+});
 </script>

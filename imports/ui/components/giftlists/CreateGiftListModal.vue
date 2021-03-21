@@ -26,12 +26,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {GiftListManager} from "../../managers/GiftListManager";
 import {GiftList} from "../../../objects/giftlist/GiftList";
+import Vue from "vue";
 
-export default {
-name: "CreateGiftListModal",
+
+export default Vue.extend( {
   data() {
     return {
       modalShow: false,
@@ -82,7 +83,7 @@ name: "CreateGiftListModal",
     }
 
   }
-}
+});
 </script>
 
 <style scoped>

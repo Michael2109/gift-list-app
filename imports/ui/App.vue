@@ -4,14 +4,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import GiftListsPage from "./pages/GiftListsPage";
+import Vue from "vue";
 
-export default {
-  name: 'app',
+export default Vue.extend({
   components: {GiftListsPage}
-}
+});
 </script>
 
 <style scoped>

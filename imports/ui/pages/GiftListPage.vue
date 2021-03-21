@@ -14,13 +14,13 @@
   </div></div>
 </template>
 
-<script>
+<script lang="ts">
 import GiftListPageHeader from "../components/giftlist/GiftListPageHeader";
 import {GiftListManager} from "../managers/GiftListManager";
 import GiftItem from "../components/giftlist/GiftItem";
+import Vue from "vue";
 
-export default {
-  name: 'GiftList',
+export default Vue.extend({
   components: {GiftItem, GiftListPageHeader},
   props: ['giftListId'],
   created() {
@@ -43,5 +43,5 @@ export default {
     }
   }
 
-}
+});
 </script>

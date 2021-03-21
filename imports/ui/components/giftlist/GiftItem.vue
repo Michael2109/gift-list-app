@@ -22,7 +22,6 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "GiftItem",
   props: {
     gift: {
       type: Object

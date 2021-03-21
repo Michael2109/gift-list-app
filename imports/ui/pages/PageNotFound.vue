@@ -2,10 +2,11 @@
 <div>404 page not found</div>
 </template>
 
-<script>
-export default {
-name: "PageNotFound"
-}
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+});
 </script>
 
 <style scoped>

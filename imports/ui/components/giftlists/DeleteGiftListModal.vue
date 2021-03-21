@@ -11,11 +11,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {GiftListManager} from "../../managers/GiftListManager";
+import Vue from "vue";
 
-export default {
-  name: "DeleteGiftListModal",
+
+export default Vue.extend( {
   props: {
     giftList: {
       type: Object
@@ -45,7 +46,7 @@ export default {
     }
 
   }
-}
+});
 </script>
 
 <style scoped>

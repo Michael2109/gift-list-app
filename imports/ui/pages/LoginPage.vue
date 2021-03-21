@@ -12,9 +12,10 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "Login",
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
   data() {
     return {
       alert: {
@@ -59,7 +60,7 @@ export default {
 
     }
   }
-}
+});
 </script>
 
 <style scoped>

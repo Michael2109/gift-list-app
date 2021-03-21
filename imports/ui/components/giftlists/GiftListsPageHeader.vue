@@ -22,10 +22,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import CreateGiftListModal from "./CreateGiftListModal";
-export default {
-  name: "GiftListsPageHeader",
+import Vue from "vue";
+
+export default Vue.extend( {
   components: {CreateGiftListModal},
   methods: {
     getEmailAddress(){
@@ -47,7 +48,7 @@ export default {
       });
     }
   }
-}
+});
 </script>
 
 <style scoped>

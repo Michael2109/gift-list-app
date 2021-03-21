@@ -55,14 +55,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {GiftListManager} from "../../managers/GiftListManager";
 import {GiftList} from "../../../objects/giftlist/GiftList";
 import {Gift} from "../../../objects/gift/Gift";
 import {findFreeId} from "../../utils/Utils";
+import Vue from "vue";
 
-export default {
-name: "CreateGiftModal",
+export default Vue.extend( {
   props: {
   giftList : {
     type: GiftList
@@ -133,7 +133,7 @@ name: "CreateGiftModal",
     }
 
   }
-}
+});
 </script>
 
 <style scoped>
