@@ -28,6 +28,15 @@ Meteor.startup(() => {
 
             Vue.config.productionTip = false
 
+            router.beforeEach((to, from, next) => {
+                if (to.name !== "Login" && Meteor.userId() == null) {
+                    console.log("Redirect to Sign In");
+                    next({name: 'Login'});
+                } else {
+                    next();
+                }
+            });
+
             new Vue({
                 el: '#app',
                 router,

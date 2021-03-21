@@ -41,10 +41,7 @@ export default Vue.extend( {
       Meteor.logout();
 
       this.$router.push({
-        name: 'Login',
-        params: {
-          giftListId: this.giftList._id
-        }
+        name: 'Login'
       });
     }
   }

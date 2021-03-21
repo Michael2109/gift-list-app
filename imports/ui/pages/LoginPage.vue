@@ -1,4 +1,5 @@
 <template>
+  <div>
   <section id="login">
     <form>
       <h2>Login</h2>
@@ -9,7 +10,11 @@
       <input type="password" v-model="login.password" placeholder="Password"/>
       <button v-on:click="onSubmit">Log in</button>
     </form>
+
   </section>
+
+    <button v-on:click="signUp">Sign up</button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +24,7 @@ export default Vue.extend({
   data() {
     return {
       alert: {
-        message: "hello world"
+        message: ""
       },
       login: {
         login: "",
@@ -35,7 +40,10 @@ export default Vue.extend({
   }
   ,
   methods: {
-    onSubmit: function (event) {
+    signUp: function (): void {
+      this.$router.push({name: "SignUp"})
+    },
+    onSubmit: function (event): void {
       event.preventDefault();
 
       const username = this.login.login;
