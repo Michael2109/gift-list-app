@@ -1,46 +1,43 @@
 import {Factory} from 'meteor/dburles:factory';
 import {Meteor} from 'meteor/meteor';
 import {resetDatabase} from 'meteor/xolvio:cleaner';
+import * as tsSinon from "ts-sinon"
 import {GiftListCollectionManager} from "../imports/api/collections/GiftListCollection";
 import User = Meteor.User;
 
-import { sinon } from 'meteor/practicalmeteor:sinon';
 
-describe("skel", function () {
-
-    let sandbox;
-
-    it("package.json has correct name", async function () {
-
-
-    });
+describe("Test", function () {
 
     let currentUser;
+
+    let userStub;
+    let userIdStub;
 
     beforeEach(() => {
         resetDatabase();
         Factory.define('user', Meteor.users, {
 
         });
+
         currentUser = Factory.create('user');
-        sinon.stub(Meteor, 'user');
+        userStub = tsSinon.default.stub(Meteor, 'user').callsFake(() => currentUser);
 
-        Meteor.user.returns(currentUser);
+        userIdStub= tsSinon.default.stub(Meteor, 'userId').callsFake(() => currentUser._id);
 
-        sinon.stub(Meteor, 'userId');
-
-        Meteor.userId.returns(currentUser._id);
     });
 
     afterEach(() => {
-        Meteor.user.restore();
-        Meteor.userId.restore();
+       userStub.restore();
+       userIdStub.restore();
         resetDatabase();
     });
 
     it("does something", () => {
         console.log("Gift lists")
         console.log(GiftListCollectionManager.getInstance().getGiftLists());
+    })
+    it("does something else", () => {
+        console.log("HERE")
     })
 });
 

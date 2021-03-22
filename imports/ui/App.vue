@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-
 import GiftListsPage from "./pages/GiftListsPage";
 import Vue from "vue";
 

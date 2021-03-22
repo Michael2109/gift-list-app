@@ -31,6 +31,7 @@ export default Vue.extend({
   methods: {
     onGiftListDeleted(giftListId){
 
+      console.log(Meteor.user())
       console.log(giftListId)
 
       // Remove it from the displayed array
