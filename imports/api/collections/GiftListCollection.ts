@@ -14,8 +14,19 @@ export class GiftListCollectionManager {
         return this.instance;
     }
 
-    insert(giftList: GiftList): void {
-        this.GiftListCollection.insert(giftList);
+    insert(giftList: GiftList): string {
+        const Future = Npm.require('fibers/future');
+        let future = new Future();
+
+        giftList.userId = Meteor.userId();
+
+        const id: string = this.GiftListCollection.insert(giftList, () => {
+            future.return();
+        });
+
+        future.wait();
+
+        return id;
     }
 
     getById(id: string) : GiftList | undefined{

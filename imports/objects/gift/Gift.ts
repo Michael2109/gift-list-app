@@ -8,13 +8,38 @@ export class Gift {
 
     _id: number;
 
-    name: string = "";
+    _name: string = "";
 
-    description: string = "";
+    _description: string = "";
 
-    isPrivate: boolean = false;
+    _isPrivate: boolean = false;
 
-    cost: number = 0;
+    _cost: number = 0;
 
-    giftList: GiftList = null as any;
+    _giftList: GiftList = null as any;
+
+    setName(value: string): Gift {
+        this._name = value;
+        return this;
+    }
+
+    setDescription(value: string): Gift {
+        this._description = value;
+        return this;
+    }
+
+    setIsPrivate(value: boolean): Gift {
+        this._isPrivate = value;
+        return this;
+    }
+
+    setCost(value: number): Gift {
+        this._cost = value;
+        return this;
+    }
+
+    setGiftList(value: GiftList): Gift {
+        this._giftList = value;
+        return this;
+    }
 }
