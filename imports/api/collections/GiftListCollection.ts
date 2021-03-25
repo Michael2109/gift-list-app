@@ -1,6 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 import {GiftList} from "../../objects/giftlist/GiftList";
 import {Gift} from "../../objects/gift/Gift";
+import {createId} from "../utils/HelperUtils";
 
 /**
  * todo remove update gift list and allow adding/removing single gifts by id
@@ -20,6 +21,10 @@ export class GiftListCollectionManager {
         let future = new Future();
 
         giftList.userId = Meteor.userId();
+
+        giftList.gifts.forEach(gift => {
+            gift._id = createId();
+        })
 
         const id: string = this.GiftListCollection.insert(giftList, () => {
             future.return();
@@ -49,9 +54,7 @@ export class GiftListCollectionManager {
     }
 
     addGift(giftListId: string, gift: Gift){
-        const ObjectID = require('mongodb').ObjectID;
-        const giftId: string = new ObjectID().toHexString();
-        gift._id = giftId;
+        gift._id = createId();
 
         this.GiftListCollection.update({_id: giftListId}, {$push: {gifts: gift}});
     }

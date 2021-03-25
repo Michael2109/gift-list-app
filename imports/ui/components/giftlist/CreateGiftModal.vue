@@ -117,7 +117,7 @@ export default Vue.extend( {
       // todo This should be done server side
       const freeId =  findFreeId(this.giftList.gifts.map(gift => gift._id));
 
-      const gift = new Gift(freeId);
+      const gift = new Gift();
       gift.name = this.name;
       gift.description = this.description;
       gift.cost = this.cost;

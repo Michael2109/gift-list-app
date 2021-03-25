@@ -2,12 +2,10 @@ import {GiftList} from "../giftlist/GiftList";
 
 export class Gift {
 
-    constructor(id: string) {
-        this._id = id;
+    constructor() {
     }
 
     _id: string;
-
 
     _name: string = "";
 
@@ -18,6 +16,11 @@ export class Gift {
     _cost: number = 0;
 
     _giftList: GiftList = null as any;
+
+    setId(id: string): Gift {
+        this._id = id;
+        return this; 
+    }
 
     setName(value: string): Gift {
         this._name = value;

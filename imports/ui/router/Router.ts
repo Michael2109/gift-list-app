@@ -42,10 +42,8 @@ export const router: VueRouter = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.name !== "Login" && Meteor.userId() == null) {
+    if (to.name !== "Login" && to.name !== "SignUp" && Meteor.userId() == null) {
         next({name: 'Login'});
-    } else if(to.name !== "SignUp" && Meteor.userId() == null) {
-        next({name: 'SignUp'});
     } else {
         next();
     }

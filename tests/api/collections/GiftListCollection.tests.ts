@@ -5,7 +5,7 @@ import {GiftList} from "../../../imports/objects/giftlist/GiftList";
 import * as assert from "assert";
 import {Gift} from "../../../imports/objects/gift/Gift";
 
-describe("Other test", function () {
+describe("GiftListCollection test", function () {
 
     const userSession: UserSession = new UserSession();
 
@@ -29,12 +29,14 @@ describe("Other test", function () {
         const giftList = new GiftList();
         giftList.personName = "Person Name";
         giftList.username = "Username";
-        giftList.gifts = [new Gift(0).setName("Gift")];
+        giftList.gifts = [new Gift().setName("Gift")];
 
         GiftListCollectionManager.getInstance().insert(giftList);
-        assert.strictEqual(1, GiftListCollectionManager.getInstance().getGiftLists().length);
 
-        const dbGiftList = GiftListCollectionManager.getInstance().getGiftLists()[0];
+        const dbGiftLists = GiftListCollectionManager.getInstance().getGiftLists();
+        assert.strictEqual(1,dbGiftLists.length);
+
+        const dbGiftList = dbGiftLists[0];
         assert.strictEqual("Person Name", dbGiftList.personName)
         assert.strictEqual("Username", dbGiftList.username)
 
@@ -43,6 +45,37 @@ describe("Other test", function () {
     });
 
     it("Adds a gift to a gift list", () => {
+
+        const giftList = new GiftList();
+        giftList.personName = "Person Name";
+        giftList.username = "Username";
+        giftList.gifts = [];
+
+        GiftListCollectionManager.getInstance().insert(giftList);
+
+        const dbGiftLists = GiftListCollectionManager.getInstance().getGiftLists();
+        assert.strictEqual(1,dbGiftLists.length);
+
+        const dbGiftList = dbGiftLists[0];
+
+        assert.strictEqual(0, dbGiftList.gifts.length);
+
+        const gift = new Gift().setName("Name").setDescription("Description").setCost(100).setIsPrivate(true);
+        GiftListCollectionManager.getInstance().addGift(dbGiftList._id, gift);
+
+        const updatedGiftList: GiftList = GiftListCollectionManager.getInstance().getById(dbGiftList._id);
+
+        assert.strictEqual(1, updatedGiftList.gifts.length);
+
+        const dbGift: Gift = updatedGiftList.gifts[0];
+
+        assert.strictEqual("Name", dbGift._name);
+        assert.strictEqual("Description", dbGift._description);
+        assert.strictEqual(100, dbGift._cost);
+        assert.strictEqual(true, dbGift._isPrivate);
+        assert.notStrictEqual(null, gift._id);
+        assert.notStrictEqual(undefined, gift._id);
+
 
     })
 
