@@ -2,11 +2,12 @@ import {GiftList} from "../giftlist/GiftList";
 
 export class Gift {
 
-    constructor(id: number) {
+    constructor(id: string) {
         this._id = id;
     }
 
-    _id: number;
+    _id: string;
+
 
     _name: string = "";
 

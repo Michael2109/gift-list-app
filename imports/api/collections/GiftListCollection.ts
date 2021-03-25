@@ -1,5 +1,6 @@
 import {Mongo} from 'meteor/mongo';
 import {GiftList} from "../../objects/giftlist/GiftList";
+import {Gift} from "../../objects/gift/Gift";
 
 /**
  * todo remove update gift list and allow adding/removing single gifts by id
@@ -45,6 +46,18 @@ export class GiftListCollectionManager {
 
     clearAll(): void {
         this.GiftListCollection.remove({});
+    }
+
+    addGift(giftListId: string, gift: Gift){
+        const ObjectID = require('mongodb').ObjectID;
+        const giftId: string = new ObjectID().toHexString();
+        gift._id = giftId;
+
+        this.GiftListCollection.update({_id: giftListId}, {$push: {gifts: gift}});
+    }
+
+    removeGift(giftListId: string, giftId: number){
+
     }
 
     updateGiftList(giftList: GiftList) {
