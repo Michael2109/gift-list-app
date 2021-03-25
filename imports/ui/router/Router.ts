@@ -4,6 +4,7 @@ import GiftListPage from "../pages/GiftListPage.vue";
 import PageNotFound from "../pages/PageNotFound.vue";
 import LoginPage from "../pages/LoginPage.vue";
 import SignUpPage from "../pages/SignUpPage.vue";
+import {Meteor} from "meteor/meteor";
 
 const routes: Array<RouteConfig> = [
     {
@@ -38,4 +39,14 @@ export const router: VueRouter = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.name !== "Login" && Meteor.userId() == null) {
+        next({name: 'Login'});
+    } else if(to.name !== "SignUp" && Meteor.userId() == null) {
+        next({name: 'SignUp'});
+    } else {
+        next();
+    }
 });

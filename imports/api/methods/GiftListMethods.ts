@@ -14,7 +14,7 @@ Meteor.methods({
     });
 
     Meteor.methods({
-        "addGiftList": function (giftList: GiftList): void {
+        "addGiftList": function (giftList: GiftList): string {
             return GiftListCollectionManager.getInstance().insert(giftList);
         }
     });
