@@ -6,8 +6,12 @@
       <div class="info" v-bind:class="this.good">
         <p>{{ this.alert.message }}</p>
       </div>
-      <input type="text" v-model="login.login" placeholder="Username"/>
-      <input type="password" v-model="login.password" placeholder="Password"/>
+      <label>
+        <input type="text" v-model="login.login" placeholder="Username"/>
+      </label>
+      <label>
+        <input type="password" v-model="login.password" placeholder="Password"/>
+      </label>
       <button v-on:click="onSubmit">Log in</button>
     </form>
 

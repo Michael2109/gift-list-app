@@ -1,3 +1,4 @@
+// @ts-ignore
 import {Factory} from 'meteor/dburles:factory';
 import {Meteor} from 'meteor/meteor';
 import * as tsSinon from "ts-sinon"

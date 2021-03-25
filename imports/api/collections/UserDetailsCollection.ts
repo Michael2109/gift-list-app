@@ -58,13 +58,11 @@ export class UserDetailsCollectionManager {
         const userDetails: UserDetails = this.userDetailsCollection.findOne({userId: Meteor.userId()});
 
         if (userDetails) {
-            const sharedGiftLists: GiftList[] = userDetails.sharedGiftLists.map(sharedGiftList => {
+            return userDetails.sharedGiftLists.map(sharedGiftList => {
                 const giftListId = sharedGiftList.giftListId;
                 console.log(giftListId)
                 return GiftListCollectionManager.getInstance().getById(giftListId);
-            })
-
-            return sharedGiftLists;
+            });
         } else {
             return [];
         }

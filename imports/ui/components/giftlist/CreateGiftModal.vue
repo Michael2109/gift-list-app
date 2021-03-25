@@ -114,13 +114,7 @@ export default Vue.extend( {
 
     async createGift(){
 
-      // todo This should be done server side
-      const freeId =  findFreeId(this.giftList.gifts.map(gift => gift._id));
-
-      const gift = new Gift();
-      gift.name = this.name;
-      gift.description = this.description;
-      gift.cost = this.cost;
+      const gift = new Gift().setName(this.name).setDescription(this.description).setCost(this.cost);
 
       const externalThis = this;
 

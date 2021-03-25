@@ -1,3 +1,4 @@
+// @ts-ignore
 import {resetDatabase} from 'meteor/xolvio:cleaner';
 import {GiftListCollectionManager} from "../../../imports/api/collections/GiftListCollection";
 import {UserSession} from "../../utils/UserSession";
@@ -34,7 +35,7 @@ describe("GiftListCollection test", function () {
         GiftListCollectionManager.getInstance().insert(giftList);
 
         const dbGiftLists = GiftListCollectionManager.getInstance().getGiftLists();
-        assert.strictEqual(1,dbGiftLists.length);
+        assert.strictEqual(1, dbGiftLists.length);
 
         const dbGiftList = dbGiftLists[0];
         assert.strictEqual("Person Name", dbGiftList.personName)
@@ -54,7 +55,7 @@ describe("GiftListCollection test", function () {
         GiftListCollectionManager.getInstance().insert(giftList);
 
         const dbGiftLists = GiftListCollectionManager.getInstance().getGiftLists();
-        assert.strictEqual(1,dbGiftLists.length);
+        assert.strictEqual(1, dbGiftLists.length);
 
         const dbGiftList = dbGiftLists[0];
 
@@ -75,9 +76,15 @@ describe("GiftListCollection test", function () {
         assert.strictEqual(true, dbGift._isPrivate);
         assert.notStrictEqual(null, gift._id);
         assert.notStrictEqual(undefined, gift._id);
+    });
 
 
-    })
+    it("Clears all gift lists", () => {
 
+
+    });
+
+    it("Removes a gift by id", () => {
+
+    });
 });
-

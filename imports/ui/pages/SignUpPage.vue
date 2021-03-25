@@ -5,9 +5,15 @@
       <div class="info" v-bind:class="this.good">
         <p>{{ this.alert.message }}</p>
       </div>
-      <input type="text" v-model="login.username" placeholder="Username"/>
-      <input type="text" v-model="login.email" placeholder="Email"/>
-      <input type="password" v-model="login.password" placeholder="Password"/>
+      <label>
+        <input type="text" v-model="login.username" placeholder="Username"/>
+      </label>
+      <label>
+        <input type="text" v-model="login.email" placeholder="Email"/>
+      </label>
+      <label>
+        <input type="password" v-model="login.password" placeholder="Password"/>
+      </label>
       <button v-on:click="onSubmit">Sign up</button>
     </form>
   </section>
