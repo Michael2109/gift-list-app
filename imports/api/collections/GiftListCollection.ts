@@ -22,9 +22,7 @@ export class GiftListCollectionManager {
 
         giftList.userId = Meteor.userId();
 
-        giftList.gifts.forEach(gift => {
-            gift.setId(createId());
-        })
+        giftList.gifts.forEach(gift => gift._id = createId());
 
         const id: string = this.GiftListCollection.insert(giftList, () => {
             future.return();
@@ -55,7 +53,6 @@ export class GiftListCollectionManager {
 
     addGift(giftListId: string, gift: Gift){
         gift._id = createId();
-
         this.GiftListCollection.update({_id: giftListId}, {$push: {gifts: gift}});
     }
 

@@ -2,6 +2,7 @@
 import {Meteor} from "meteor/meteor";
 import User = Meteor.User;
 import {GiftList} from "../../objects/giftlist/GiftList";
+import {Gift} from "../../objects/gift/Gift";
 
 export class GiftListManager {
 
@@ -103,6 +104,24 @@ export class GiftListManager {
         if (user != null) {
 
             Meteor.call("addGiftList", giftList, (err: any, res) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    callback();
+                }
+            });
+
+        } else {
+            throw new Error("User not logged in")
+        }
+    }
+
+
+    addGift(giftListId:string, gift: Gift, callback: () => void) {
+        const user: User = Meteor.user();
+        if (user != null) {
+
+            Meteor.call("addGift", giftListId, gift, (err: any, res) => {
                 if (err) {
                     console.error(err);
                 } else {

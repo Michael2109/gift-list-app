@@ -1,10 +1,10 @@
 // @ts-ignore
 import {resetDatabase} from 'meteor/xolvio:cleaner';
-import {GiftListCollectionManager} from "../../../imports/api/collections/GiftListCollection";
+import {GiftListCollectionManager} from "../../../api/collections/GiftListCollection";
 import {UserSession} from "../../utils/UserSession";
-import {GiftList} from "../../../imports/objects/giftlist/GiftList";
+import {GiftList} from "../../../objects/giftlist/GiftList";
 import * as assert from "assert";
-import {Gift} from "../../../imports/objects/gift/Gift";
+import {Gift} from "../../../objects/gift/Gift";
 
 describe("GiftListCollection test", function () {
 
@@ -74,8 +74,8 @@ describe("GiftListCollection test", function () {
         assert.strictEqual("Description", dbGift._description);
         assert.strictEqual(100, dbGift._cost);
         assert.strictEqual(true, dbGift._isPrivate);
-        assert.notStrictEqual(null, gift._id);
-        assert.notStrictEqual(undefined, gift._id);
+        assert.notStrictEqual(null, dbGift._id);
+        assert.notStrictEqual(undefined, dbGift._id);
     });
 
 

@@ -14,11 +14,6 @@ export class Gift {
 
     _cost: number = 0;
 
-    setId(id: string): Gift {
-        this._id = id;
-        return this;
-    }
-
     setName(value: string): Gift {
         this._name = value;
         return this;
