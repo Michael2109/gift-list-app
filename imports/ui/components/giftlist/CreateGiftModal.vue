@@ -2,8 +2,8 @@
   <div>
     <b-button @click="modalShow = !modalShow">+</b-button>
 
-    <b-modal  id="create-gift-modal" title="Create Gift"  v-model="modalShow" @show="resetModal"
-              @hidden="resetModal" @ok="handleOk">
+    <b-modal id="create-gift-modal" title="Create Gift" v-model="modalShow" @show="resetModal"
+             @hidden="resetModal" @ok="handleOk">
 
       <div class="modal-body">
         <form ref="form" @submit.stop.prevent="handleSubmit">
@@ -57,17 +57,11 @@
 
 <script lang="ts">
 import {GiftListManager} from "../../managers/GiftListManager";
-import {GiftList} from "../../../objects/giftlist/GiftList";
 import {Gift} from "../../../objects/gift/Gift";
-import {findFreeId} from "../../utils/Utils";
 import Vue from "vue";
 
-export default Vue.extend( {
-  props: {
-  giftList : {
-    type: GiftList
-  }
-  },
+export default Vue.extend({
+  props: ["giftList"],
   data() {
     return {
       modalShow: false,
@@ -82,7 +76,9 @@ export default Vue.extend( {
   methods: {
     isValid() {
       const valid = this.$refs.form.checkValidity()
-      this.nameState = valid
+      this.nameState = valid;
+      this.descriptionState = valid;
+      this.costState = valid;
       return valid
     },
     resetModal() {
@@ -107,22 +103,17 @@ export default Vue.extend( {
 
         // Hide the modal manually
         this.$nextTick(() => {
-          this.$bvModal.hide('create-gift-list-modal');
+          this.$bvModal.hide('create-gift-modal');
         })
       }
     },
 
-    async createGift(){
+    async createGift() {
 
       const gift = new Gift().setName(this.name).setDescription(this.description).setCost(this.cost);
 
-      const externalThis = this;
-
-      this.giftList.gifts.push(gift);
-
-      GiftListManager.getInstance().updateGiftList(this.giftList, (success) => {
-        console.log("Gift list added")
-        externalThis.$emit('gift-list-created');
+      GiftListManager.getInstance().addGift(this.giftList._id, gift, () => {
+        this.$emit('gift-created');
       });
     }
 

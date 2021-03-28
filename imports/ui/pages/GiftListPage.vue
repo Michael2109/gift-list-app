@@ -3,10 +3,9 @@
   <div>
     <div v-if="this.giftList !== undefined">
 
-      <gift-list-page-header :gift-list="giftList"/>
+      <gift-list-page-header @gift-created="updateGiftList" :gift-list="giftList"/>
 
-
-      <div v-for="gift in this.giftList.gifts"><gift-item :gift=gift></gift-item></div>
+      <div v-for="gift in this.giftList.gifts" ><gift-item :gift="gift"></gift-item></div>
     </div>
 
   <div v-if="this.giftList === undefined">
@@ -37,7 +36,7 @@ export default Vue.extend({
   methods: {
     updateGiftList() {
       GiftListManager.getInstance().getGiftListById(this.giftListId, giftList => {
-        this.giftList = giftList
+        this.giftList = giftList;
       });
 
     }

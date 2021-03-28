@@ -56,8 +56,8 @@ export class GiftListCollectionManager {
         this.GiftListCollection.update({_id: giftListId}, {$push: {gifts: gift}});
     }
 
-    removeGift(giftListId: string, giftId: number){
-
+    removeGift(giftListId: string, giftId: string){
+        this.GiftListCollection.update({_id: giftListId}, {$pull: {gifts: {_id: giftId}}});
     }
 
     updateGiftList(giftList: GiftList) {

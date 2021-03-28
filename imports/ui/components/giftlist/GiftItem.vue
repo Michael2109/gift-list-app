@@ -4,13 +4,13 @@
     <div class="col">
       <div class="row align-items-center">
         <div class="col-4">
-          {{ gift.name.name }}
+          {{ gift._name }}
         </div>
         <div class="col-4">
-          {{ gift.description }}
+          {{ gift._description }}
         </div>
         <div class="col-4">
-          {{ gift.cost }}
+          {{ gift._cost }}
         </div>
       </div>
     </div>
@@ -27,8 +27,11 @@ export default Vue.extend({
       type: Object
     }
   },
-  methods: {
-  }
+  mounted() {
+    console.log("Mounted");
+    console.log(this.gift);
+  },
+  methods: {}
 });
 </script>
 

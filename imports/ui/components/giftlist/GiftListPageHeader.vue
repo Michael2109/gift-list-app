@@ -19,7 +19,7 @@
         <div class="float-right">
           <div class="row">
             <button v-on:click="console.log(`Unimplemented`)">SHARE</button>
-            <create-gift-modal/>
+            <create-gift-modal  v-on="$listeners" :gift-list="this.giftList"/>
             <button v-on:click="console.log(`Unimplemented`)">DELETE</button>
             <button v-on:click="handleBackClicked">Back</button>
           </div>

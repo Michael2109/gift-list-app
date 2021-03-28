@@ -103,7 +103,7 @@ describe("GiftListCollection test", function () {
         assert.notStrictEqual(undefined, dbGift._id);
     });
 
-    it("Clears all gift lists", () => {
+    it("Clears all gifts from a gift list", () => {
 
 
     });
