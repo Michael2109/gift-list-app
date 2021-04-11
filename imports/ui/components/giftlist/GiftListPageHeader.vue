@@ -20,7 +20,7 @@
           <div class="row">
             <button v-on:click="console.log(`Unimplemented`)">SHARE</button>
             <create-gift-modal  v-on="$listeners" :gift-list="this.giftList"/>
-            <button v-on:click="console.log(`Unimplemented`)">DELETE</button>
+            <button v-on:click="handleDeleteClicked">DELETE</button>
             <button v-on:click="handleBackClicked">Back</button>
           </div>
         </div>
@@ -33,6 +33,7 @@
 <script lang="ts">
 import CreateGiftModal from "./CreateGiftModal";
 import Vue from "vue";
+import {GiftListManager} from "../../managers/GiftListManager";
 
 export default Vue.extend( {
   components: {CreateGiftModal},
@@ -40,6 +41,11 @@ export default Vue.extend( {
   methods: {
     handleBackClicked(){
       this.$router.push({name: "GiftLists"});
+    },
+    handleDeleteClicked(){
+      GiftListManager.getInstance().deleteGiftList(this.giftList._id, () => {
+        this.$router.push({name: "GiftLists"});
+      })
     }
   }
 });
