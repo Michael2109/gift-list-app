@@ -10,7 +10,10 @@ import VueRouter from "vue-router";
 import App from '../imports/ui/App.vue'
 import {router} from "../imports/ui/router/Router";
 import BootstrapVue, {IconsPlugin} from "bootstrap-vue/src";
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
 
+Vue.use(Vuetify);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
@@ -28,9 +31,12 @@ Meteor.startup(() => {
 
             Vue.config.productionTip = false
 
+            const vuetify = new Vuetify();
+
             new Vue({
                 el: '#app',
                 router,
+                vuetify,
                 template: '<App/>',
                 components: { App },
                 render: h => h(App)
